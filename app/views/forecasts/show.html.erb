@@ -3,17 +3,48 @@
 </div>
 
 <div class="col-md-6">
-  <h2>Current Conditions <small><%= image_tag("icons/#{@currently.icon}.png", size: "48x48", alt: "#{@currently.summary}") %></small></h2>
-  <ul>
-    <li><%= @currently.summary %></li>
-    <li>Feels Like <%= @currently.apparentTemperature.ceil %>℃</li>
-    <li>Humidity: <%= @currently.humidity*100 %>%</li>
-    <li>Nearest Storm: <%= @currently.nearestStormDistance %> miles</li>
-    <li>Chance of <%= @currently.precipType %>: <%= @currently.precipProbability*100 %>%</li>
-    <li>Visibility: <%= @currently.visibility %>Km</li>
-    <li>Wind: <%= @currently.windSpeed %>Mph @ <%= @currently.windBearing %> Degrees</li>
-    <li>Pressure: <%= @currently.pressure %> hPa</li>
-  </ul>
+  <div class="col-md-12">
+    <h2>Current Conditions <small><%= image_tag("icons/#{@currently.icon}.png", size: "48x48", alt: "#{@currently.summary}") %></small></h2>
+    <ul>
+      <li><%= @currently.summary %></li>
+      <li>Feels Like <%= @currently.apparentTemperature.ceil %>℃</li>
+      <li>Humidity: <%= @currently.humidity*100 %>%</li>
+      <li>Nearest Storm: <%= @currently.nearestStormDistance %> miles</li>
+      <li>Chance of <%= @currently.precipType %>: <%= @currently.precipProbability*100 %>%</li>
+      <li>Visibility: <%= @currently.visibility %>Km</li>
+      <li>Wind: <%= @currently.windSpeed %>Mph @ <%= @currently.windBearing %> Degrees</li>
+      <li>Pressure: <%= @currently.pressure %> hPa</li>
+    </ul>
+  </div>
+
+  <div class="col-md-12">
+    <h2>The next 24 hours</h2>
+    <% next_24_hours = @hourly.data %>
+    <% next_24_hours.pop until next_24_hours.count < 25 %>
+    <div class='table-responsive'>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Weather</th>
+            <th>Hour</th>
+            <th>Summary</th>
+            <th>Temperature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% next_24_hours.each do |hour| %>
+          <% time = DateTime.strptime("#{hour.time}",'%s') %>
+          <tr>
+            <td><%= image_tag("icons/#{hour.icon}.png", size: "24x24", alt: "#{hour.summary}") %></td>
+            <td><%= time.strftime('%k:%M') %></td>
+            <td><%= hour.summary %></td>
+            <td><%= hour.temperature.round(0) %>℃</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <div class="col-md-6">
