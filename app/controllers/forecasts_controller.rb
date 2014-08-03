@@ -1,3 +1,5 @@
+require 'hashie'
+
 class ForecastsController < ApplicationController
   def index
     @forecasts = Forecast.all
@@ -5,6 +7,7 @@ class ForecastsController < ApplicationController
 
   def show
     @forecast = Forecast.find(params[:id])
+    @currently = @forecast.api_data.currently
   end
 
   def new

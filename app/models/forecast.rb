@@ -1,13 +1,12 @@
 class Forecast < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode
-  serialize(:api_data, Hash)
+  after_save :save_mash
+  serialize :api_data, Hash
 
-  def api_data
-    while self.latitude == nil or self.longitude == nil
-      wait(1)
-    end
+  def save_mash
     ForecastIO.api_key = Rails.application.secrets.forecast_io_api_key
-    ForecastIO.forecast(self.latitude, self.longitude, params:{units: 'uk'})
+    forecast_data = ForecastIO.forecast(self.latitude, self.longitude, params:{units: 'uk'})
+    update_column :api_data, forecast_data
   end
 end
