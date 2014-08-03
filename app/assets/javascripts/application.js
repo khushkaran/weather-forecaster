@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+//= require angular.min
+//= require angular-timer.min
