@@ -1,4 +1,6 @@
+<div style="text-align:center">
 <%= form_for @forecast do |f| %>
-  <%= f.text_field :location, class: 'forecast_location' %>
+  <%= f.text_field :location, {class: 'forecast_location', style: 'font-size:60px'} %>
   <%= f.submit "Get Forecast" %>
 <% end %>
+</div>
