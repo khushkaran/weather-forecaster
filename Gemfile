@@ -36,6 +36,7 @@ gem 'webmock', group: :test
 
 gem "geocoder"
 gem 'forecast_io'
+gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
