@@ -5,17 +5,35 @@
 <div class="col-md-6">
   <h2>Current Conditions <small><%= image_tag("icons/#{@currently.icon}.png", size: "48x48", alt: "#{@currently.summary}") %></small></h2>
   <ul>
-  <li><%= @currently.summary %></li>
-  <li>Feels Like <%= @currently.apparentTemperature.ceil %></li>
-  <li>Humidity: <%= @currently.humidity*100 %>%</li>
-  <li>Nearest Storm: <%= @currently.nearestStormDistance %> miles</li>
-  <li>Chance of <%= @currently.precipType %>: <%= @currently.precipProbability*100 %>%</li>
-  <li>Visibility: <%= @currently.visibility %>Km</li>
-  <li>Wind: <%= @currently.windSpeed %>Mph @ <%= @currently.windBearing %> Degrees</li>
-  <li>Pressure: <%= @currently.pressure %> hPa</li>
+    <li><%= @currently.summary %></li>
+    <li>Feels Like <%= @currently.apparentTemperature.ceil %>℃</li>
+    <li>Humidity: <%= @currently.humidity*100 %>%</li>
+    <li>Nearest Storm: <%= @currently.nearestStormDistance %> miles</li>
+    <li>Chance of <%= @currently.precipType %>: <%= @currently.precipProbability*100 %>%</li>
+    <li>Visibility: <%= @currently.visibility %>Km</li>
+    <li>Wind: <%= @currently.windSpeed %>Mph @ <%= @currently.windBearing %> Degrees</li>
+    <li>Pressure: <%= @currently.pressure %> hPa</li>
   </ul>
 </div>
 
 <div class="col-md-6">
-  
+  <h2>Weekly <small><%= image_tag("icons/#{@dailies.icon}.png", size: "48x48", alt: "#{@dailies.summary}") %></small></h2>
+  <p><%= @dailies.summary %></p>
+  <% @dailies.data.each do |daily| %>
+    <div class="col-md-6 col-sm-3 col">
+      <div class="col-md-12">
+        <% forecastTime = DateTime.strptime("#{daily.apparentTemperatureMaxTime}",'%s') %>
+        <h3>
+          <% if forecastTime.today? %>
+            Today
+          <% else %>
+            <%= forecastTime.strftime('%A') %>
+          <% end %>
+        <small><%= image_tag("icons/#{daily.icon}.png", size: "36x36", alt: "#{daily.summary}") %></small></h3>
+      </div>
+      <div class="col-md-6"><h4>Max</h4><%= daily.apparentTemperatureMax.round(0) %>℃</div>
+      <div class="col-md-6"><h4>Min</h4><%= daily.apparentTemperatureMin.round(0) %>℃</div>
+      <div class="col-md-12"><%= daily.summary %></div>
+    </div>
+  <% end %>
 </div>

@@ -8,6 +8,7 @@ class ForecastsController < ApplicationController
   def show
     @forecast = Forecast.find(params[:id])
     @currently = @forecast.api_data.currently
+    @dailies = @forecast.api_data.daily
   end
 
   def new
