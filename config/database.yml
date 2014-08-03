@@ -81,4 +81,3 @@ test:
 production:
   <<: *default
   database: weather-forecaster_production
-  password: <%= ENV['WEATHER-FORECASTER_DATABASE_PASSWORD'] %>
