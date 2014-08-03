@@ -2,7 +2,8 @@
 <h1>Hello, there!</h1>
 <p>Want to find the weather for any location? Enter it below!</p>
 <%= form_for @forecast do |f| %>
-  <%= f.text_field :location, {class: 'forecast_location', style: 'font-size:20px'} %>
-  <%= f.submit "Get Forecast", class: 'btn btn-primary btn-lg' %>
+  <div class="col-md-9"><%= f.text_field :location, class: 'forecast_location form-control input-lg' %></div>
+  <div class="col-md-3"><%= f.submit "Get Forecast", class: 'btn btn-primary btn-lg' %></div>
+  <br clear="all">
 <% end %>
 </div>
