@@ -11,6 +11,9 @@ class ForecastsController < ApplicationController
     @currently = @forecast.api_data.currently
     @dailies = @forecast.api_data.daily
     @hourly = @forecast.api_data.hourly
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Oops! The forecast could not be found.'
+      redirect_to '/forecasts'
   end
 
   def new
