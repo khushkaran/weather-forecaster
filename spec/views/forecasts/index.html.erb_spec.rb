@@ -39,5 +39,17 @@ describe "Displaying index" do
     it "has a link for creating a new forecast" do
       expect(page).to have_content "Create Forecast"
     end
+
+    it "can only see their own forecasts" do
+      logout
+      login_as create :user2
+      visit 'forecasts'
+      expect(page).to have_content "Location"
+      expect(page).to have_content "Latitude"
+      expect(page).to have_content "Longitude"
+      expect(page).not_to have_content "DE24 3JG"
+      expect(page).not_to have_content "52.875771"
+      expect(page).not_to have_content "-1.505059"
+    end
   end
 end
