@@ -12,6 +12,10 @@ describe Forecast do
     expect(@forecast.longitude.round(6)).to eq -1.505059
   end
 
+  it "can get the api response" do
+    expect(@forecast.get_api_data).to eq FORECAST
+  end
+
   it "saves the api response to the database" do
     expect(@forecast.api_data).to eq FORECAST
   end
