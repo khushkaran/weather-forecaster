@@ -2,7 +2,7 @@ require 'hashie'
 
 class ForecastsController < ApplicationController
   def index
-    @forecasts = Forecast.all
+    @forecasts = Forecast.order('created_at DESC')
   end
 
   def show
