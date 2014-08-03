@@ -1,6 +1,8 @@
-<div style="text-align:center">
+<div class="jumbotron">
+<h1>Hello, there!</h1>
+<p>Want to find the weather for any location? Enter it below!</p>
 <%= form_for @forecast do |f| %>
-  <%= f.text_field :location, {class: 'forecast_location', style: 'font-size:60px'} %>
-  <%= f.submit "Get Forecast" %>
+  <%= f.text_field :location, {class: 'forecast_location', style: 'font-size:20px'} %>
+  <%= f.submit "Get Forecast", class: 'btn btn-primary btn-lg' %>
 <% end %>
 </div>
