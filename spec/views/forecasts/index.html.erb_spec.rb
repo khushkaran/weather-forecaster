@@ -13,4 +13,12 @@ describe "Displaying index" do
     expect(page).to have_content "52.875771"
     expect(page).to have_content "-1.505059"
   end
+
+  it "a forecast can be deleted" do
+    visit 'forecasts'
+    click_button 'Delete'
+    expect(page).not_to have_content "DE24 3JG"
+    expect(page).not_to have_content "52.875771"
+    expect(page).not_to have_content "-1.505059"
+  end
 end
