@@ -61,7 +61,7 @@
   <h2>Weekly <small><%= image_tag("icons/#{@dailies.icon}.png", size: "48x48", alt: "#{@dailies.summary}") %></small></h2>
   <p><%= @dailies.summary %></p>
   <% @dailies.data.each do |daily| %>
-    <div class="col-md-6 col-sm-3 col">
+    <div class="col-md-6 col-sm-3 col well">
       <div class="col-md-12">
         <% forecastTime = DateTime.strptime("#{daily.apparentTemperatureMaxTime}",'%s') %>
         <h3>
