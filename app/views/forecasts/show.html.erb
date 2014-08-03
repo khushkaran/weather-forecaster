@@ -1,7 +1,14 @@
+<script>
+  angular.module('created_timer', ['timer']);
+</script>
+
 <div class="col-md-12">
 <div class="col-md-9"><h1>Forecast for <%= @forecast.location %> <small>(Latitude: <%= @forecast.latitude %> Longitude: <%= @forecast.longitude %>)</small></h1></div>
 <div class="col-md-3" ng-app="created_timer">Forecast is 
   <timer start-time="<%= @forecast.created_at.to_f.round(0) * 1000 %>">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer> old.
+  <% if (Time.now - @forecast.created_at) > 1800 %>
+    <p><small>The forecast is over 30 mins old, <%= link_to "click here", new_forecast_path %> to create a new one.</small></p>
+  <% end %>
 </div>
 </div>
 
@@ -71,7 +78,3 @@
     </div>
   <% end %>
 </div>
-
-<script>
-  angular.module('created_timer', ['timer']);
-</script>
