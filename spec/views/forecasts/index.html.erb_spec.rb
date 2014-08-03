@@ -21,6 +21,13 @@ describe "Displaying index" do
     expect(page).not_to have_content "-1.505059"
   end
 
+  it "a forecast can be viewed" do
+    click_link 'View'
+    expect(page).to have_content "Forecast for DE24 3JG"
+    expect(page).to have_content "52.875771"
+    expect(page).to have_content "-1.505059"
+  end
+
   it "has a link for creating a new forecast" do
     expect(page).to have_content "Create Forecast"
   end
