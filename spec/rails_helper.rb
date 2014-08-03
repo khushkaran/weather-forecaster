@@ -35,6 +35,12 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.include FactoryGirl::Syntax::Methods
 
+  config.before(:each) do
+    stub_request(:get, "https://api.forecast.io/forecast/dbc88215754b7c7e42505af85dfef469/52.875771,-1.505059?units=uk").
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.0'}).
+         to_return(:status => 200, :body => FORECAST.to_json, :headers => {})
+  end
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
