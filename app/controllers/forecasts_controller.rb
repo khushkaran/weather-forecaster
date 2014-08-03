@@ -1,6 +1,7 @@
 require 'hashie'
 
 class ForecastsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @forecasts = Forecast.order('created_at DESC')
   end
