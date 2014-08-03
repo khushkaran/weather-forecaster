@@ -9,9 +9,10 @@ describe "Displaying index" do
   end
   context "whilst signed in" do
     before{
-      login_as create :user
-      create :forecast
-      visit 'forecasts'
+      user = create :user
+      create :forecast, user: user
+      login_as user
+      visit forecasts_path
     }
     it "displays the created forecasts" do
       expect(page).to have_content "Location"
@@ -43,7 +44,7 @@ describe "Displaying index" do
     it "can only see their own forecasts" do
       logout
       login_as create :user2
-      visit 'forecasts'
+      visit forecasts_path
       expect(page).to have_content "Location"
       expect(page).to have_content "Latitude"
       expect(page).to have_content "Longitude"

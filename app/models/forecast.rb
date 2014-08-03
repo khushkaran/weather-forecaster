@@ -3,6 +3,7 @@ class Forecast < ActiveRecord::Base
   after_validation :geocode
   after_save :save_mash
   serialize :api_data, Hash
+  belongs_to :user
 
   def save_mash
     ForecastIO.api_key = Rails.application.secrets.forecast_io_api_key

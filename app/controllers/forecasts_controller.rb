@@ -3,7 +3,7 @@ require 'hashie'
 class ForecastsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @forecasts = Forecast.order('created_at DESC')
+    @forecasts = current_user.forecasts.order('created_at DESC')
   end
 
   def show
@@ -18,7 +18,7 @@ class ForecastsController < ApplicationController
   end
 
   def create
-    forecast = Forecast.create params[:forecast].permit(:location)
+    forecast = current_user.forecasts.create params[:forecast].permit(:location)
     redirect_to forecast_path(forecast.id)
   end
 
