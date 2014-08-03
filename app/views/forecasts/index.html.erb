@@ -16,7 +16,8 @@
       <td><%= forecast.location %></td>
       <td><%= forecast.latitude %></td>
       <td><%= forecast.longitude %></td>
-      <td><%= link_to "Delete", forecast_path(forecast), {method: :delete, class: 'btn btn-danger'} %></td>
+      <td><%= link_to "View", forecast_path(forecast), {class: 'btn btn-primary'} %>
+      <%= link_to "Delete", forecast_path(forecast), {method: :delete, class: 'btn btn-danger'} %></td>
     </tr>
     <% end %>
   </tbody>
