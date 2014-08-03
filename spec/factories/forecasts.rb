@@ -2,9 +2,6 @@
 
 FactoryGirl.define do
   factory :forecast do
-    location "MyString"
-    latitude 1.5
-    longitude 1.5
-    api_data "MyText"
+    location "DE24 3JG"
   end
 end
