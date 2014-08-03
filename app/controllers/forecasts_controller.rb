@@ -3,6 +3,7 @@ class ForecastsController < ApplicationController
   end
 
   def show
+    @forecast = Forecast.find(params[:id])
   end
 
   def new
