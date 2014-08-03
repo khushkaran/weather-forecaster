@@ -10,6 +10,7 @@ class ForecastsController < ApplicationController
   end
 
   def create
-    
+    forecast = Forecast.create params[:forecast].permit(:location)
+    redirect_to forecast_path(forecast.id)
   end
 end
