@@ -15,4 +15,8 @@ class ForecastsController < ApplicationController
     forecast = Forecast.create params[:forecast].permit(:location)
     redirect_to forecast_path(forecast.id)
   end
+
+  def destroy
+    
+  end
 end
