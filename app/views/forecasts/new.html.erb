@@ -1,2 +1,4 @@
-<h1>Forecasts#new</h1>
-<p>Find me in app/views/forecasts/new.html.erb</p>
+<%= form_for @forecast do |f| %>
+  <%= f.text_field :location, class: 'forecast_location' %>
+  <%= f.submit "Get Forecast" %>
+<% end %>
