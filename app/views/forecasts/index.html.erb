@@ -5,14 +5,16 @@
       <th>Location</th>
       <th>Latitude</th>
       <th>Longitude</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <% @forecasts.each do |forcast| %>
+    <% @forecasts.each do |forecast| %>
     <tr>
-      <td><%= forcast.location %></td>
-      <td><%= forcast.latitude %></td>
-      <td><%= forcast.longitude %></td>
+      <td><%= forecast.location %></td>
+      <td><%= forecast.latitude %></td>
+      <td><%= forecast.longitude %></td>
+      <td><%= link_to "Delete", forecast_path(forecast), method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
