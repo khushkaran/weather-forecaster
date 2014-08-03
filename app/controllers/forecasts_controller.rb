@@ -6,5 +6,6 @@ class ForecastsController < ApplicationController
   end
 
   def new
+    @forecast = Forecast.new
   end
 end
