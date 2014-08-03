@@ -17,6 +17,10 @@ class ForecastsController < ApplicationController
   end
 
   def destroy
-    
+    forecast = Forecast.find params[:id]
+    forecast.destroy
+
+    flash[:notice] = 'Forecast successfully deleted.'
+    redirect_to forecasts_path
   end
 end
