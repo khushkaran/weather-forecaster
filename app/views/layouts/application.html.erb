@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header"><%= link_to("<h2>Weather Forecaster</h2>".html_safe, forecasts_path) %></div>
+  </div>
+</nav>
+
 <% flash.each do |key, value| %>
   <div class="alert <%= flash_class(key) %>"><%= value %></div>
 <% end %>
