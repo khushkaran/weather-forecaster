@@ -9,8 +9,9 @@ describe "Viewing a forecast" do
   end
   context "whilst signed in" do
     before{
-      login_as create :user
-      @forecast = create :forecast   
+      user = create :user
+      @forecast = create :forecast, user: user
+      login_as user
       visit forecast_path(@forecast)
     }
 
