@@ -1,5 +1,8 @@
 <div class="col-md-12">
-<h1>Forecast for <%= @forecast.location %> <small>(Latitude: <%= @forecast.latitude %> Longitude: <%= @forecast.longitude %>)</small></h1>
+<div class="col-md-9"><h1>Forecast for <%= @forecast.location %> <small>(Latitude: <%= @forecast.latitude %> Longitude: <%= @forecast.longitude %>)</small></h1></div>
+<div class="col-md-3" ng-app="created_timer">Forecast is 
+  <timer start-time="<%= @forecast.created_at.to_f * 1000 %>">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer> old.
+</div>
 </div>
 
 <div class="col-md-6">
@@ -68,3 +71,7 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  angular.module('created_timer', ['timer']);
+</script>
