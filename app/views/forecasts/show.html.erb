@@ -3,9 +3,17 @@
 </div>
 
 <div class="col-md-6">
-  <h2>Current Conditions</h2>
-  <p><%= @currently.summary %></p>
-  <p>Feels Like <%= @currently.apparentTemperature.ceil %></p>
+  <h2>Current Conditions <small><%= image_tag("icons/#{@currently.icon}.png", size: "48x48", alt: "#{@currently.summary}") %></small></h2>
+  <ul>
+  <li><%= @currently.summary %></li>
+  <li>Feels Like <%= @currently.apparentTemperature.ceil %></li>
+  <li>Humidity: <%= @currently.humidity*100 %>%</li>
+  <li>Nearest Storm: <%= @currently.nearestStormDistance %> miles</li>
+  <li>Chance of <%= @currently.precipType %>: <%= @currently.precipProbability*100 %>%</li>
+  <li>Visibility: <%= @currently.visibility %>Km</li>
+  <li>Wind: <%= @currently.windSpeed %>Mph @ <%= @currently.windBearing %> Degrees</li>
+  <li>Pressure: <%= @currently.pressure %> hPa</li>
+  </ul>
 </div>
 
 <div class="col-md-6">
