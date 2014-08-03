@@ -34,6 +34,7 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
 
   config.before(:each) do
     stub_request(:get, "https://api.forecast.io/forecast/dbc88215754b7c7e42505af85dfef469/52.875771,-1.505059?units=uk").
